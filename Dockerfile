@@ -34,6 +34,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && chmod 600 /root/.ssh/id_rsa \
     && ssh-keyscan gitee.com > /root/.ssh/known_hosts \
     && git clone -b ${JD_BASE_BRANCH} ${JD_BASE_URL} ${JD_DIR} \
+    && rm ${JD_DIR}/panel \
+    && git clone -b panel https://github.com/kalagxw/jd-base.git ${JD_DIR}/panel \
     && cd ${JD_DIR}/panel \
     && npm install \
     && npm install -g pm2 \
